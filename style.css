@@ -673,3 +673,87 @@ html,body{
     height: 65%;
     margin-right: 45px;
 }
+
+#page20{
+    margin-top: 4vw;
+    width: 100%;
+    position: relative;
+    background-color: black;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.25vw;
+}
+#page20 h2{
+    font-size: 1.6vw;
+}
+
+#page20 h1{
+    font-size: 4.5vw;
+}
+
+#page20-desc{
+    margin-top: 2vw;
+    width: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;  
+}
+#page20-desc p{
+    color: #86868b;
+    font-size: 1.5vw;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#page20-desc p .highlight {
+    color: #fff;
+}
+
+#page21{
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    top: 0%;
+}
+
+#page21>canvas{
+    position: relative;
+    max-width: 100vw;
+    max-height: 100vw;
+}
+
+#page22{
+    position: relative;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.2vw;
+}
+
+#page22>h1{
+    font-size: 2.2vw;
+}
+#page22>p{
+    width: 45%;
+    font-size: 1.5vw;
+    color: #86868b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#page22>p>span{
+    color: #fff;
+}
+

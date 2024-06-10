@@ -629,3 +629,115 @@ gsap.to("#page17-center>video",{
 tl6.to("#page19-text",{
     top:`-50%`
 });
+
+function canvas1(){
+  const canvas = document.querySelector("#page21>canvas");
+const context = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+
+window.addEventListener("resize", function () {
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+render();
+});
+
+function files(index) {
+var data = `
+.//Apple vision canvas images/Vision00001.png
+.//Apple vision canvas images/Vision00002.png
+.//Apple vision canvas images/Vision00003.png
+.//Apple vision canvas images/Vision00004.png
+.//Apple vision canvas images/Vision00005.png
+.//Apple vision canvas images/Vision00006.png
+.//Apple vision canvas images/Vision00007.png
+.//Apple vision canvas images/Vision00008.png
+.//Apple vision canvas images/Vision00009.png
+.//Apple vision canvas images/Vision00010.png
+.//Apple vision canvas images/Vision00011.png
+.//Apple vision canvas images/Vision00012.png
+.//Apple vision canvas images/Vision00013.png
+.//Apple vision canvas images/Vision00014.png
+.//Apple vision canvas images/Vision00015.png
+.//Apple vision canvas images/Vision00016.png
+.//Apple vision canvas images/Vision00017.png
+.//Apple vision canvas images/Vision00018.png
+.//Apple vision canvas images/Vision00019.png
+.//Apple vision canvas images/Vision00020.png
+.//Apple vision canvas images/Vision00021.png
+.//Apple vision canvas images/Vision00022.png
+.//Apple vision canvas images/Vision00023.png
+.//Apple vision canvas images/Vision00024.png
+.//Apple vision canvas images/Vision00025.png
+`;
+return data.split("\n")[index];
+}
+
+const frameCount = 25;
+
+const images = [];
+const imageSeq = {
+frame: 1,
+};
+
+for (let i = 0; i < frameCount; i++) {
+const img = new Image();
+img.src = files(i);
+images.push(img);
+}
+
+gsap.to(imageSeq, {
+frame: frameCount - 1,
+snap: "frame",
+ease: `none`,
+scrollTrigger: {
+  scrub: true,
+  trigger: `#page21`,
+  //   set start end according to preference
+  start: `top top`,
+  end: `80% top`,
+  scroller: `#main`,
+},
+onUpdate: render,
+});
+
+images[1].onload = render;
+
+function render() {
+scaleImage(images[imageSeq.frame], context);
+}
+
+function scaleImage(img, ctx) {
+var canvas = ctx.canvas;
+var hRatio = canvas.width / img.width;
+var vRatio = canvas.height / img.height;
+var ratio = Math.max(hRatio, vRatio);
+var centerShift_x = (canvas.width - img.width * ratio) / 2;
+var centerShift_y = (canvas.height - img.height * ratio) / 2;
+ctx.clearRect(0, 0, canvas.width, canvas.height);
+ctx.drawImage(
+  img,
+  0,
+  0,
+  img.width,
+  img.height,
+  centerShift_x,
+  centerShift_y,
+  img.width * ratio,
+  img.height * ratio
+);
+}
+ScrollTrigger.create({
+
+trigger: "#page21",
+pin: true,
+// markers:true,
+scroller: `#main`,
+//   set start end according to preference
+start: `top top`,
+end: `80% top`,
+});
+}
+canvas1();
